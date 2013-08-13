@@ -17,13 +17,13 @@ public class NumberTest {
 				11, 12, 13, 14, 15);
 
 		Filter primeFilter = new PrimeFilter();
-		Numbers primeNumbers = new Numbers(numbers);
+		Numbers primeNumbers = new Numbers();
 
 		List<Integer> expectedNumbers = Arrays.asList(2, 3, 5, 7, 11, 13);
 
 		// When
-		List<Integer> filteredNumbers = primeNumbers
-				.getFilteredNumbers(primeFilter);
+		List<Integer> filteredNumbers = primeNumbers.getFilteredNumbers(
+				numbers, primeFilter);
 
 		// Then
 		Assert.assertEquals(expectedNumbers, filteredNumbers);
@@ -38,14 +38,14 @@ public class NumberTest {
 				11, 12, 13, 14, 15);
 
 		Filter oddFilter = new OddFilter();
-		Numbers oddNumbers = new Numbers(numbers);
+		Numbers oddNumbers = new Numbers();
 
 		List<Integer> expectedNumbers = Arrays
 				.asList(1, 3, 5, 7, 9, 11, 13, 15);
 
 		// When
-		List<Integer> filteredNumbers = oddNumbers
-				.getFilteredNumbers(oddFilter);
+		List<Integer> filteredNumbers = oddNumbers.getFilteredNumbers(numbers,
+				oddFilter);
 
 		// Then
 		Assert.assertEquals(expectedNumbers, filteredNumbers);
@@ -63,12 +63,12 @@ public class NumberTest {
 
 		Filter oddFilter = new OddFilter();
 
-		Numbers resultNumbers = new Numbers(numbers);
-
 		List<Integer> expectedNumbers = Arrays.asList(3, 5, 7, 11, 13);
 
+		Numbers resultNumbers = new Numbers();
+
 		List<Integer> filteredNumbers = resultNumbers.getFilteredNumbers(
-				primeFilter, oddFilter);
+				numbers, primeFilter, oddFilter);
 
 		// Then
 		Assert.assertEquals(expectedNumbers, filteredNumbers);
@@ -86,12 +86,12 @@ public class NumberTest {
 		int endNumber = 10;
 
 		Filter rangefilter = new RangeFilter(startNumber, endNumber);
-		Numbers resultNumbers = new Numbers(numbers);
+		Numbers resultNumbers = new Numbers();
 
 		List<Integer> expectedNumbers = Arrays.asList(5, 6, 7, 8, 9, 10);
 
-		List<Integer> filteredNumbers = resultNumbers
-				.getFilteredNumbers(rangefilter);
+		List<Integer> filteredNumbers = resultNumbers.getFilteredNumbers(
+				numbers, rangefilter);
 
 		// Then
 		Assert.assertEquals(expectedNumbers, filteredNumbers);
@@ -113,14 +113,14 @@ public class NumberTest {
 		Filter oddFilter = new OddFilter();
 		Filter primeFilter = new PrimeFilter();
 
-		Numbers resultNumbers = new Numbers(numbers);
+		Numbers resultNumbers = new Numbers();
 
 		List<Integer> expectedNumbers = Arrays.asList(3, 5, 7, 11, 13, 17, 19,
 				23, 29, 31);
 
 		// When
 		List<Integer> filteredNumbers = resultNumbers.getFilteredNumbers(
-				rangefilter, oddFilter, primeFilter);
+				numbers, rangefilter, oddFilter, primeFilter);
 
 		// Then
 		Assert.assertEquals(expectedNumbers, filteredNumbers);
